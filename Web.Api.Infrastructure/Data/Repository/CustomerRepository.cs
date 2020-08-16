@@ -21,5 +21,12 @@ namespace Web.Api.Infrastructure.Data.Repository
         {
             return ctx.SaveChanges() > 0;
         }
+
+        public CustomerEntity GetCustomerByEmail(string email)
+        {
+            if (email == null) return null;
+            var customer = ctx.Customers.Where(c => c.Email == email).FirstOrDefault();
+            return customer;
+        }
     }
 }

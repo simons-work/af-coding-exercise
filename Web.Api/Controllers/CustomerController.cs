@@ -27,7 +27,9 @@ namespace Web.Api.Controllers
             try
             {
                 var customerId = customerService.Create(customerDto);
-                return Ok(new { CustomerId = customerId });
+                return customerId > 0 ?
+                    Ok(new { CustomerId = customerId }) :
+                    BadRequest($"Cannot register as customer already exists with email '{customerDto.Email}'") as ActionResult;
             }
             catch (Exception ex)
             {

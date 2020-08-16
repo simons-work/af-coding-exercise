@@ -6,5 +6,6 @@ namespace Web.Api.Infrastructure.Data.Repository
     {
         void Create(CustomerEntity customerEntity);
         bool SaveChanges();
+        CustomerEntity GetCustomerByEmail(string email);
     }
 }
