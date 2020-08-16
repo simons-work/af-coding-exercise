@@ -10,7 +10,7 @@ namespace Web.Api.Core.Models
 
         public string PolicyNumber { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public string Email { get; set; }
     }
