@@ -43,7 +43,7 @@ namespace Web.Api.Core.Validators
         }
         public bool AgeMustBeEqualOrGreaterThan(int age, DateTime? dob, DateTime currentDate)
         {
-            return dob != null ? dob <= currentDate.AddYears(-age) : true;
+            return dob == null || dob <= currentDate.AddYears(-age);
         }
     }
 }

@@ -1,13 +1,14 @@
-﻿using Web.Api.Infrastructure.Data.Entities;
+﻿using System.Threading.Tasks;
+using Web.Api.Infrastructure.Data.Entities;
 
 namespace Web.Api.Infrastructure.Data.Repository
 {
     public interface ICustomerRepository
     {
-        void Create(CustomerEntity customerEntity);
+        Task CreateAsync(CustomerEntity customerEntity);
 
-        bool SaveChanges();
+        Task<bool> SaveChangesAsync();
 
-        CustomerEntity GetCustomerByEmail(string email);
+        Task<CustomerEntity> GetCustomerByEmailAsync(string email);
     }
 }
