@@ -22,7 +22,7 @@ namespace Web.Api.Core.Validators
                 .NotNull().Unless(x => x.DateOfBirth != null)
                 .WithMessage("Either {PropertyName} or Date Of Birth must be specified.")
                 .EmailAddress()
-                .Must(email => HasCorrectSuffix(email, ".co.uk", ".com")).Unless(x => x.DateOfBirth != null)
+                .Must(email => HasCorrectSuffix(email, ".co.uk", ".com")).Unless(x => x.DateOfBirth != null && x.Email == null)
                 .WithMessage("{PropertyName} must end with '.co.uk', or '.com' suffix.");
 
             RuleFor(x => x.DateOfBirth)
