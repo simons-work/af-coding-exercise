@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using Web.Api.Core.Models;
+using Web.Api.Core.Services;
 
 namespace Web.Api.Controllers
 {
@@ -9,13 +10,14 @@ namespace Web.Api.Controllers
     [Route("api/[controller]")]
     public class CustomersController : ControllerBase
     {
-        public CustomersController(ILogger<CustomersController> logger)
+        public CustomersController(ILogger<CustomersController> logger, ICustomerService customerService)
         {
             this.logger = logger;
+            this.customerService = customerService;
         }
 
         /// <summary>
-        /// Register new customer.
+        /// Register (/create) new customer.
         /// </summary>
         /// <param name="customerDto">New customer details.</param>
         /// <returns></returns>
@@ -24,7 +26,7 @@ namespace Web.Api.Controllers
         {
             try
             {
-                var customerId = 1;
+                var customerId = customerService.Create(customerDto);
                 return Ok(new { CustomerId = customerId });
             }
             catch (Exception ex)
@@ -35,5 +37,6 @@ namespace Web.Api.Controllers
         }
 
         private readonly ILogger<CustomersController> logger;
+        private readonly ICustomerService customerService;
     }
 }

@@ -24,6 +24,7 @@ namespace Web.Api
             services
                 .AddConnectionProvider(Configuration)
                 .AddRepositories()
+                .AddServices()
                 .AddMvc()
                 .AddFluentValidation();
         }
