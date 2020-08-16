@@ -20,16 +20,16 @@ namespace Web.Api.Core.Validators
 
             RuleFor(x => x.Email)
                 .NotNull().Unless(x => x.DateOfBirth != null)
-                .WithMessage("Either {PropertyName} or Date Of Birth must be specified.")
+                .WithMessage("'{PropertyName}' or 'Date Of Birth' must be specified.")
                 .EmailAddress()
                 .Must(email => HasCorrectSuffix(email, ".co.uk", ".com")).Unless(x => x.DateOfBirth != null && x.Email == null)
-                .WithMessage("{PropertyName} must end with '.co.uk', or '.com' suffix.");
+                .WithMessage("'{PropertyName}' must end with '.co.uk', or '.com' suffix.");
 
             RuleFor(x => x.DateOfBirth)
                 .NotNull().Unless(x => x.Email != null)
-                .WithMessage("Either {PropertyName} or Email must be specified.")
+                .WithMessage("'{PropertyName}' or 'Email' must be specified.")
                 .Must(dob => AgeMustBeEqualOrGreaterThan(18, dob))
-                .WithMessage("{PropertyName} indicates user is not correct age 18 or over.");
+                .WithMessage("'{PropertyName}' indicates user is not aged 18 or over.");
         }
 
         public bool HasCorrectSuffix(string value, params string[] suffixes)

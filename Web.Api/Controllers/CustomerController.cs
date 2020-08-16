@@ -20,7 +20,7 @@ namespace Web.Api.Controllers
         /// Register (/create) new customer.
         /// </summary>
         /// <param name="customerDto">New customer details.</param>
-        /// <returns></returns>
+        /// <returns>New customer Id if the customer can be registered</returns>
         [HttpPost]
         public ActionResult Create(CustomerDto customerDto)
         {
@@ -33,7 +33,7 @@ namespace Web.Api.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError("Customer Create error occurred", ex);
+                logger.LogError("CustomerController.Create() exception:", ex);
                 throw;
             }
         }

@@ -5,8 +5,6 @@ namespace Web.Api.Infrastructure.Data.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly InsuranceDbContext ctx;
-
         public CustomerRepository(InsuranceDbContext ctx)
         {
             this.ctx = ctx;
@@ -28,5 +26,7 @@ namespace Web.Api.Infrastructure.Data.Repository
             var customer = ctx.Customers.Where(c => c.Email == email).FirstOrDefault();
             return customer;
         }
+
+        private readonly InsuranceDbContext ctx;
     }
 }

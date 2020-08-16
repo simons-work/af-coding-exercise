@@ -116,8 +116,7 @@ namespace Web.Api.Core.Tests
 
         #endregion
 
-
-        #region Date of Birth tests
+        #region DateOfBirth tests
 
         [TestMethod]
         public void Should_not_have_error_when_DateOfBirth_18_years_ago()
@@ -229,6 +228,5 @@ namespace Web.Api.Core.Tests
         }
 
         #endregion
-
     }
 }

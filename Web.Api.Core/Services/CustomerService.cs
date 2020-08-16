@@ -8,8 +8,6 @@ namespace Web.Api.Core.Services
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ICustomerRepository customerRepository;
-
         public CustomerService(ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
@@ -19,9 +17,9 @@ namespace Web.Api.Core.Services
         /// Register (/create) new customer.
         /// </summary>
         /// <param name="customerDto">New customer details.</param>
-        /// <returns>-1 of customer was already registerd at that email address if specified, otherwise the customerId of the new customer registration</returns>
+        /// <returns>-1 if customer was already registerd at that email address if specified, otherwise the customerId of the new customer registration</returns>
         /// <remarks>It is unlikely but possible for two or more people to share the same name and birthdate but assuming
-        /// email address would be expected to be globally unique so if customer already exist then a new one is not created and also correct 400 status can be returned to caller</remarks>
+        /// email address would be expected to be globally unique so if customer already exists then a new one is not created so that correct 400 status can be returned by the Web API layer</remarks>
         public int Create(CustomerDto customerDto)
         {
             var customerEntity = customerDto.Adapt<CustomerEntity>();
@@ -34,5 +32,7 @@ namespace Web.Api.Core.Services
 
             return customerEntity.Id;
         }
+
+        private readonly ICustomerRepository customerRepository;
     }
 }
