@@ -7,3 +7,5 @@
 bin/
 obj/
 
+/Web.Api.Core/Web.Api.Core.xml
+/Web.Api/Web.Api.xml
