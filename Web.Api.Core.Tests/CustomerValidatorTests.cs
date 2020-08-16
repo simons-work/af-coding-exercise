@@ -149,7 +149,7 @@ namespace Web.Api.Core.Tests
         [TestMethod]
         public void Should_have_error_when_Email_has_incorrect_suffix()
         {
-            _sut.ShouldHaveValidationErrorFor(c => c.Email, "simon@test.net").WithErrorMessage("Email must end with '.co.uk', or '.com' suffix.");
+            _sut.ShouldHaveValidationErrorFor(c => c.Email, "simon@test.net").WithErrorMessage("'Email' must end with '.co.uk', or '.com' suffix.");
         }
 
         [TestMethod]
@@ -157,7 +157,7 @@ namespace Web.Api.Core.Tests
         {
             var model = new CustomerDto { Email = null };
             var result = _sut.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(c => c.Email).WithErrorMessage("Email must end with '.co.uk', or '.com' suffix.");
+            result.ShouldHaveValidationErrorFor(c => c.Email).WithErrorMessage("'Email' must end with '.co.uk', or '.com' suffix.");
         }
 
         [TestMethod]

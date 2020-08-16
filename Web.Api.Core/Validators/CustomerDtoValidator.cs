@@ -16,12 +16,12 @@ namespace Web.Api.Core.Validators
                 .NotNull().Length(3, 50);
 
             RuleFor(x => x.PolicyNumber)
-                .NotNull().Matches(@"^[A-Z][A-Z]-\d{6,6}$");
+                .NotNull().Matches(@"^[A-Z][A-Z]-\d{6,6}$"); // 2 Uppercase letters followed by 6 digits only
 
             RuleFor(x => x.Email)
                 .NotNull().Unless(x => x.DateOfBirth != null)
                 .WithMessage("'{PropertyName}' or 'Date Of Birth' must be specified.")
-                .EmailAddress()
+                .Matches(@"^\S{4,}@\S{2,}$") // at least 4 non whitespace chars before @ symbol, at least 2 non whitespace chars after
                 .Must(email => HasCorrectSuffix(email, ".co.uk", ".com")).Unless(x => x.DateOfBirth != null && x.Email == null)
                 .WithMessage("'{PropertyName}' must end with '.co.uk', or '.com' suffix.");
 
@@ -34,7 +34,6 @@ namespace Web.Api.Core.Validators
 
         public bool HasCorrectSuffix(string value, params string[] suffixes)
         {
-            value = value?.Trim();
             return suffixes.Any(suffix => value?.EndsWith(suffix, StringComparison.CurrentCultureIgnoreCase) ?? false);
         }
 
