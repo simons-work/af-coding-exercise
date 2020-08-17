@@ -74,7 +74,7 @@ namespace Web.Api
             string[] xmlCommentsFiles = new[]
             {
                 $"{Assembly.GetExecutingAssembly().GetName().Name}.xml",
-                $"{Assembly.GetAssembly(typeof(CustomerDto)).GetName().Name}.xml"
+                $"{Assembly.GetAssembly(typeof(CustomerDto))?.GetName().Name}.xml"
             };
 
             return (setupAction) =>

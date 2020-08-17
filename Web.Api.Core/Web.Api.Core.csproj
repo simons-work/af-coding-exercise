@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Web.Api.Core.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.1.2" />
     <PackageReference Include="Mapster" Version="6.1.1" />
   </ItemGroup>

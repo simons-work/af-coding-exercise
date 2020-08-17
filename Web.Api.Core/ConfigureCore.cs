@@ -1,6 +1,5 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using Web.Api.Core;
 using Web.Api.Core.Services;
 using Web.Api.Core.Validators;
 

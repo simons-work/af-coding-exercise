@@ -7,28 +7,28 @@ namespace Web.Api.Infrastructure.Data.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        public CustomerRepository(InsuranceDbContext ctx)
+        public CustomerRepository(InsuranceDbContext dbContext)
         {
-            this.ctx = ctx;
+            this.dbContext = dbContext;
         }
 
         public async Task CreateAsync(CustomerEntity customerEntity)
         {
-            await ctx.Customers.AddAsync(customerEntity);
+            await dbContext.Customers.AddAsync(customerEntity);
         }
 
         public async Task<bool> SaveChangesAsync()
         {
-            return await ctx.SaveChangesAsync() > 0;
+            return await dbContext.SaveChangesAsync() > 0;
         }
 
         public async Task<CustomerEntity> GetCustomerByEmailAsync(string email)
         {
             if (email == null) return null;
-            var customer = await ctx.Customers.Where(c => c.Email == email).FirstOrDefaultAsync();
+            var customer = await dbContext.Customers.Where(c => c.Email == email).FirstOrDefaultAsync();
             return customer;
         }
 
-        private readonly InsuranceDbContext ctx;
+        private readonly InsuranceDbContext dbContext;
     }
 }

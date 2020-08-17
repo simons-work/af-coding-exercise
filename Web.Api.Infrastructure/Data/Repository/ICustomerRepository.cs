@@ -10,5 +10,6 @@ namespace Web.Api.Infrastructure.Data.Repository
         Task<bool> SaveChangesAsync();
 
         Task<CustomerEntity> GetCustomerByEmailAsync(string email);
+
     }
 }

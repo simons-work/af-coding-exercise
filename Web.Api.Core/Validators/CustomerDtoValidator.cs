@@ -32,16 +32,17 @@ namespace Web.Api.Core.Validators
                 .WithMessage("'{PropertyName}' indicates user is not aged 18 or over.");
         }
 
-        public bool HasCorrectSuffix(string value, params string[] suffixes)
+        private static bool HasCorrectSuffix(string value, params string[] suffixes)
         {
             return suffixes.Any(suffix => value?.EndsWith(suffix, StringComparison.CurrentCultureIgnoreCase) ?? false);
         }
 
-        public bool AgeMustBeEqualOrGreaterThan(int age, DateTime? dob)
+        private static bool AgeMustBeEqualOrGreaterThan(int age, DateTime? dob)
         {
             return AgeMustBeEqualOrGreaterThan(age, dob, DateTime.Today);
         }
-        public bool AgeMustBeEqualOrGreaterThan(int age, DateTime? dob, DateTime currentDate)
+
+        private static bool AgeMustBeEqualOrGreaterThan(int age, DateTime? dob, DateTime currentDate)
         {
             return dob == null || dob <= currentDate.AddYears(-age);
         }

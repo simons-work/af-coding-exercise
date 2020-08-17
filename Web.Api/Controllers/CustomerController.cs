@@ -21,7 +21,7 @@ namespace Web.Api.Controllers
         /// Register (/create) new customer.
         /// </summary>
         /// <param name="customerDto">New customer details.</param>
-        /// <returns>New customer Id if the customer can be registered</returns>
+        /// <returns>New customer Id if the customer can be registered.</returns>
         [HttpPost]
         public async Task<ActionResult> Create(CustomerDto customerDto)
         {
